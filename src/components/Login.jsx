@@ -9,7 +9,7 @@ const Login = () => {
     const navigate = useNavigate();
     const [emailId, setEmailId] = useState("abcd@gmail.com");
     const [password, setPassword] = useState("Pass@123");
-    const [error,setError]=useState("");
+    const [error, setError] = useState("");
     const dispatch = useDispatch();
     const handleLogin = async () => {
         try {
@@ -26,7 +26,6 @@ const Login = () => {
             navigate("/");
         } catch (error) {
             setError(error?.response?.data || "Something Went Wrong !");
-            
         }
     };
     return (

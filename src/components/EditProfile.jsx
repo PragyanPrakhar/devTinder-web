@@ -26,7 +26,7 @@ const EditProfile = ({ user }) => {
                     firstName,
                     lastName,
                     photoUrl,
-                    age,
+                    age, 
                     gender,
                     about,
                 },

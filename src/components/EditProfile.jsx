@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import UserCard from "./UserCard";
 import axios from "axios";
-import {BASE_URL} from "../utils/constants";
+import { BASE_URL } from "../utils/constants";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import toast from "react-hot-toast";
 
 const EditProfile = ({ user }) => {
     const [firstName, setFirstName] = useState(user?.firstName);
@@ -16,6 +17,8 @@ const EditProfile = ({ user }) => {
     const dispatch = useDispatch();
 
     const saveProfile = async () => {
+        //clear the errors
+        setError("");
         try {
             const res = await axios.patch(
                 BASE_URL + "/profile/edit",
@@ -30,11 +33,12 @@ const EditProfile = ({ user }) => {
                 { withCredentials: true }
             );
             dispatch(addUser(res?.data?.data));
+            toast.success("Profile has been edited successfully !!");
             console.log(
                 "Profile is Updated Successfully from the frontend too."
             );
         } catch (error) {
-            setError(error.message);
+            setError(error.response.data);
         }
     };
     return (

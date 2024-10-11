@@ -6,6 +6,7 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../utils/userSlice";
 import { useEffect } from "react";
+import { Toaster } from "react-hot-toast";
 
 const Body = () => {
     const dispatch = useDispatch();
@@ -34,6 +35,7 @@ const Body = () => {
             <Navbar />
             <Outlet />
             <Footer />
+            <Toaster />
         </div>
     );
 };

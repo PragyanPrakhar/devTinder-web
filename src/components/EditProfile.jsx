@@ -9,9 +9,9 @@ import toast from "react-hot-toast";
 const EditProfile = ({ user }) => {
     const [firstName, setFirstName] = useState(user?.firstName);
     const [lastName, setLastName] = useState(user?.lastName);
-    const [age, setAge] = useState(user?.age);
-    const [gender, setGender] = useState(user?.gender);
-    const [about, setAbout] = useState(user?.about);
+    const [age, setAge] = useState(user?.age || "");
+    const [gender, setGender] = useState(user?.gender || "");
+    const [about, setAbout] = useState(user?.about || "");
     const [photoUrl, setPhotoUrl] = useState(user?.photoUrl);
     const [error, setError] = useState("");
     const dispatch = useDispatch();
@@ -26,7 +26,7 @@ const EditProfile = ({ user }) => {
                     firstName,
                     lastName,
                     photoUrl,
-                    age, 
+                    age,
                     gender,
                     about,
                 },
@@ -83,8 +83,6 @@ const EditProfile = ({ user }) => {
                                     className="input input-bordered w-full max-w-xs"
                                 />
                             </label>
-                            {/* </div> */}
-
                             <label className="form-control w-full max-w-xs my-2">
                                 <div className="label">
                                     <span className="label-text">Age:</span>

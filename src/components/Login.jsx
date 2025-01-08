@@ -51,6 +51,7 @@ const Login = () => {
             navigate("/");
             window.location.reload();
         } catch (error) {
+            console.log("Error in signing Up :-> ",error)
             setError(error?.response?.data || "Something Went Wrong !");
         }
     }

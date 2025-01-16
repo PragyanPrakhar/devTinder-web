@@ -33,15 +33,15 @@ const Login = () => {
             setError(error?.response?.data || "Something Went Wrong !");
         }
     };
-    const handleSignUp=async()=>{
+    const handleSignUp = async () => {
         try {
             const res = await axios.post(
-                BASE_U                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  RL + "/signup",
+                BASE_URL + "/signup",
                 {
                     email: emailId,
                     password: password,
-                    firstName:firstName,
-                    lastName:lastName
+                    firstName: firstName,
+                    lastName: lastName,
                 },
                 { withCredentials: true }
             );
@@ -51,10 +51,10 @@ const Login = () => {
             navigate("/");
             window.location.reload();
         } catch (error) {
-            console.log("Error in signing Up :-> ",error)
+            console.log("Error in signing Up :-> ", error);
             setError(error?.response?.data || "Something Went Wrong !");
         }
-    }
+    };
     return (
         <div className="flex justify-center my-10">
             <div className="card m-4 bg-base-300 w-96 rounded-lg shadow-xl">
@@ -133,7 +133,14 @@ const Login = () => {
                             {isLoginForm ? "Login" : "Sign Up"}
                         </button>
                     </div>
-                    <p className="m-auto cursor-pointer py-2" onClick={()=>setIsLoginForm(value=>!value)}>{isLoginForm ?"New User ? SignUp here":"Already a user? Login here"}</p>
+                    <p
+                        className="m-auto cursor-pointer py-2"
+                        onClick={() => setIsLoginForm((value) => !value)}
+                    >
+                        {isLoginForm
+                            ? "New User ? SignUp here"
+                            : "Already a user? Login here"}
+                    </p>
                 </div>
             </div>
         </div>

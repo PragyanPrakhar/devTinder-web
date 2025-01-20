@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { BASE_URL } from "../utils/constants";
 import { useDispatch, useSelector } from "react-redux";
 import { addConnections } from "../utils/connectionSlice";
+import { Link } from "react-router-dom";
 
 const Connections = () => {
     const connections = useSelector((store) => store.connections);
@@ -32,7 +33,8 @@ const Connections = () => {
         );
     }
     return (
-        <div className="text-center my-10">
+        // TODO :-> Added the overflow auto to make the connections scrollable.
+        <div className="text-center my-10 overflow-auto">
             <h1 className="text-white font-bold text-3xl">Connections</h1>
             {connections.map((connection) => {
                 const { firstName, lastName, photoUrl, age, gender, about } =
@@ -40,7 +42,7 @@ const Connections = () => {
                 return (
                     <div
                         key={connection._id}
-                        className="flex  mx-auto m-4 p-4 rounded-lg bg-base-300 w-1/2"
+                        className="flex  mx-auto m-4 p-4 rounded-lg bg-base-300 w-1/2 "
                     >
                         <div>
                             <img
@@ -56,7 +58,9 @@ const Connections = () => {
                             <p>{about}</p>
                             {age && gender && <p>{age + ", " + gender}</p>}
                         </div>
-                        
+                        <Link to={"/chat/" + connection._id}>
+                            <button className="btn btn-primary">Chat</button>
+                        </Link>
                     </div>
                 );
             })}
